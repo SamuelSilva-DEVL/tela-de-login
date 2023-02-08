@@ -6,7 +6,7 @@ import {BsFillPersonFill} from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import useAuth from "../../hooks/useAuth";
 
-export function SingIn(){
+export function SignIn(){
   return(
     <Container>
       <SectionImage>
