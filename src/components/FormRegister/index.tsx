@@ -1,62 +1,50 @@
 import {SubmitHandler, useForm} from 'react-hook-form'
 import { ContainerForm, Input } from './styles'
 import {yupResolver} from "@hookform/resolvers/yup"
-import CreateUserFormSchema from '../Validations/validationRegister'
-import { InputForm } from '../Input';
+import CreateUserFormSchema from '../../validations/validationRegister'
 import { ButtonAction } from '../Button';
 import {useNavigate} from 'react-router-dom'
+import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
 type CreateUserData = {
   name: string;
-  sobrenome: string;
   email: string;
-  senha: string;
-  fulano: string;
+  password: string;
 }
 
 export function FormularioRegistrar(){
+  const {signup} = useAuth()
+  const [error, setError] = useState()
   const navigate = useNavigate()
   const {
     register, 
     handleSubmit, 
-    formState: {errors}, 
-    reset 
+    formState: {errors}
   } = useForm<CreateUserData>({resolver: yupResolver(CreateUserFormSchema)})
 
-  console.log("Errors", errors)
-
   const handlerCreatedUser: SubmitHandler<CreateUserData> = async (values) => {
-    const usuario = JSON.stringify(values)
-    localStorage.setItem('users', usuario)
-    alert("Conta registrada com sucesso!")
-    reset()
-    navigate("/")
+    var response = signup(values.email, values.password, values.name)
+
+    if(response == true){
+      alert("Conta registrada com sucesso!")
+      navigate("/")
+    }else{
+      setError(response)
+    }
   }
 
   return(
     <ContainerForm action='' onSubmit={handleSubmit(handlerCreatedUser)}>
       <Input type="text" placeholder='Nome' {...register("name")}/>
       {errors.name?.message && <p style={{color: 'red'}}>{errors.name.message}</p>}
-      <Input type="text" placeholder='Sobrenome' {...register("sobrenome")}/>
-      {errors.sobrenome?.message && <p style={{color: 'red'}}>{errors.sobrenome.message}</p>}
       <Input type="text" placeholder='Email' {...register("email")}/>
       {errors.email?.message && <p style={{color: 'red'}}>{errors.email.message}</p>}
-      <Input type="passowrd" placeholder='Senha' {...register("senha")}/>
-      {errors.senha?.message && <p style={{color: 'red'}}>{errors.senha.message}</p>}
+      <Input type="passowrd" placeholder='Senha' {...register("password")}/>
+      {errors.password?.message && <p style={{color: 'red'}}>{errors.password.message}</p>}
 
-      {/* <input 
-        type="passwords" 
-        // @ts-ignore
-        name='senha' 
-        {...register("senha")}
-      /> */}
       <ButtonAction title='Registrar-se'/>
-
-      {/* <button 
-        type='submit'
-      >
-        Registrar-se
-      </button> */}
+      {error && <p style={{color: 'red'}}>{error}</p>}
     </ContainerForm>
   )
 }
