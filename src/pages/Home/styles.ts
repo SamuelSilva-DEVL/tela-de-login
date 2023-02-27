@@ -8,8 +8,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 20px;
+
+  h1{
+    margin-top: 28px;
+  }
 `
 
 export const Form = styled.form`
@@ -28,6 +31,7 @@ export const Input = styled.input`
   height: 40px;
   font-size: 16px;
   border: none;
+  padding: 8px;
 
   :focus{
     outline: 0;
@@ -43,4 +47,20 @@ export const Button = styled.button`
 
 export const TextError = styled.p`
   color: red;
+`
+export const ButtonLogout = styled.button`
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  transition: all 0.5s;
+
+  :hover{
+    background-color: #000000;
+    color: #fff;
+  }
 `

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { ListToDo } from "../../components/ListToDo"
 import ToDoFormSchema from "../../validations/validationToDo"
-import { Button, Container, ContainerList, Form, Input, TextError } from "./styles"
+import { Button, ButtonLogout, Container, ContainerList, Form, Input, TextError } from "./styles"
 import { GrAddCircle } from 'react-icons/gr'
 import useAuth from "../../hooks/useAuth"
 import { useNavigate } from "react-router-dom"
@@ -47,16 +47,21 @@ export function HomePage(){
   }
 
   return (
-    <>
-    <h1>Bem vindo {user?.name}</h1>
-      <button onClick={() => [signout(), navigate("/")]}>Sair</button>
       <Container>
-        <h1>To Do List</h1>
+        <h1>Bem vindo {user?.name}</h1>
+
+        <ButtonLogout
+          onClick={() => [signout(), navigate("/")]}
+        >
+          Sair
+        </ButtonLogout>
+
+        <h1>Lista de tarefas</h1>
 
         {errors?.name && <TextError>* {errors.name.message}</TextError>}
 
         <Form onSubmit={handleSubmit(addListItem)}>
-          <Input type="text" {...register("name")} placeholder="Crie uma tarefa"/>
+          <Input type="text" {...register("name")} placeholder="Adicione uma tarefa"/>
           <Button type="submit"><GrAddCircle/></Button>
         </Form>
 
@@ -71,7 +76,6 @@ export function HomePage(){
           ))}
         </ContainerList>
       </Container>  
-    </>
   )
   
 }
