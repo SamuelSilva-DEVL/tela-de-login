@@ -1,16 +1,15 @@
-import { Container, Formulario, SectionFormulario, SectionImage } from "./styles";
+import { Container, Formulario, Image, SectionFormulario, SectionImage } from "./styles";
 import LogoLocked from '../../assets/locked.png'
 import { ImageForm } from '../../components/CicleImage';
 import { FormularioLogin } from '../../components/FormLogin';
 import {BsFillPersonFill} from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import useAuth from "../../hooks/useAuth";
 
 export function SignIn(){
   return(
     <Container>
       <SectionImage>
-        <img src={LogoLocked} alt="" />
+        <Image src={LogoLocked} alt="liberar-acesso"/>
       </SectionImage>
       <SectionFormulario>
         <Formulario>

@@ -1,7 +1,7 @@
 
 import LogoLocked from '../../assets/locked.png'
 import { ImageForm } from '../../components/CicleImage';
-import { Container, Formulario, SectionFormulario, SectionImage } from './styles';
+import { Container, Formulario, Image, SectionFormulario, SectionImage } from './styles';
 import { FormularioRegistrar } from '../../components/FormRegister';
 import {RiPencilFill} from 'react-icons/ri'
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ export function SignUp(){
   return(
     <Container>
       <SectionImage>
-        <img src={LogoLocked} alt="" />
+        <Image src={LogoLocked} alt="liberar-acesso" />
       </SectionImage>
       <SectionFormulario>
         <Formulario>
