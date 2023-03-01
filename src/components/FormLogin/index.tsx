@@ -3,7 +3,7 @@ import { ContainerForm, Input } from "./styles";
 import LoginUserFormSchema from '../../validations/validationLogin'
 import {yupResolver} from "@hookform/resolvers/yup"
 import {SubmitHandler, useForm} from 'react-hook-form'
-import {Link, useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
@@ -14,22 +14,23 @@ type LoginUserData = {
 
 export function FormularioLogin(){
   const {signin} = useAuth()
-  const [error, setError] = useState()
+  const [error, setError] = useState<string | boolean>()
   const navigate = useNavigate()
   const {
     register, 
     handleSubmit, 
     formState: {errors}, 
-    reset 
+    reset
   } = useForm<LoginUserData>({resolver: yupResolver(LoginUserFormSchema)})
 
-  const handlerCreatedUser: SubmitHandler<LoginUserData> = async (values) => {
-      var response = signin(values.email, values.password)
-      
-      if(response != null){
+  const handlerCreatedUser: SubmitHandler<LoginUserData> = async (values) => {  
+      let response = signin(values.email, values.password)
+
+      if(response == true){
         navigate("/home")
       }else{
         setError(response)
+        reset()
       }
   }
 
