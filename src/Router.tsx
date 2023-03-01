@@ -1,5 +1,5 @@
-import { Fragment, ReactNode } from 'react'
-import { Routes, Route, BrowserRouter, useNavigate } from 'react-router-dom'
+import { Fragment} from 'react'
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
 import { SignUp } from './pages/SignUp'
 import { HomePage } from './pages/Home'
 import { SignIn } from './pages/SignIn'
@@ -7,9 +7,8 @@ import useAuth from './hooks/useAuth'
 
 const Private = () => {
    const { signed } = useAuth();
-   const navigate = useNavigate()
 
-   return signed > 0 ? <HomePage /> : <SignIn />
+   return signed > 0 ? <HomePage /> : <Navigate to="/" />
 }
 
 export function Router() {
