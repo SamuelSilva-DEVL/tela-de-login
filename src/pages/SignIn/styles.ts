@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
 
-  @media (max-width: 450px) {
+  @media (max-width: 900px) {
     flex-direction: column;
   }
 `
@@ -18,7 +18,7 @@ export const SectionImage = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 450px){
+  @media (max-width: 900px){
     width: 100%;
     height: 50%;
   }
@@ -41,7 +41,7 @@ export const SectionFormulario = styled.div`
   justify-content: center;
   background-color: ${(props) => props.theme.colors.cinza};
 
-  @media (max-width: 450px){
+  @media (max-width: 900px){
     width: 100%;
     height: 50%;
   }

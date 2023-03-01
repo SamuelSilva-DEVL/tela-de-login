@@ -1,4 +1,10 @@
-import { Container, Formulario, Image, SectionFormulario, SectionImage } from "./styles";
+import { 
+  Container, 
+  Formulario, 
+  Image, 
+  SectionFormulario, 
+  SectionImage 
+} from "./styles";
 import LogoLocked from '../../assets/locked.png'
 import { ImageForm } from '../../components/CicleImage';
 import { FormularioLogin } from '../../components/FormLogin';

@@ -20,12 +20,6 @@ interface IAuthProps{
   children: ReactNode
 }
 
-interface IAuthProviderProps {
-  email: string
-  password: string
-  name: string
-}
-
 interface IUserProps {
   email: string
   password: string
@@ -49,7 +43,7 @@ export const AuthProvider = ({ children }: IAuthProps) => {
 
   const signin = (email: string, password: string) => {
     //@ts-ignore
-    const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+    const usersStorage = JSON.parse(localStorage.getItem("users_bd") );
     
     const hasUser = usersStorage?.filter((user: IUserProps) => user.email === email);
 

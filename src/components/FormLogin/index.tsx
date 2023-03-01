@@ -25,7 +25,8 @@ export function FormularioLogin(){
 
   const handlerCreatedUser: SubmitHandler<LoginUserData> = async (values) => {
       var response = signin(values.email, values.password)
-      if(response == true){
+      
+      if(response != null){
         navigate("/home")
       }else{
         setError(response)

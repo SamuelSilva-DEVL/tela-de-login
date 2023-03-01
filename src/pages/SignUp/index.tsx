@@ -1,7 +1,13 @@
 
+import { 
+  Container, 
+  Formulario, 
+  Image, 
+  SectionFormulario, 
+  SectionImage 
+} from '../SignIn/styles';
 import LogoLocked from '../../assets/locked.png'
 import { ImageForm } from '../../components/CicleImage';
-import { Container, Formulario, Image, SectionFormulario, SectionImage } from './styles';
 import { FormularioRegistrar } from '../../components/FormRegister';
 import {RiPencilFill} from 'react-icons/ri'
 import { Link } from 'react-router-dom';

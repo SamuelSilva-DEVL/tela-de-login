@@ -13,6 +13,10 @@ type CreateUserData = {
   password: string;
 }
 
+type Error = {
+  error: string | undefined
+}
+
 export function FormularioRegistrar(){
   const {signup} = useAuth()
   const [error, setError] = useState()
@@ -26,7 +30,7 @@ export function FormularioRegistrar(){
   const handlerCreatedUser: SubmitHandler<CreateUserData> = async (values) => {
     var response = signup(values.email, values.password, values.name)
 
-    if(response == true){
+    if(response != null){
       alert("Conta registrada com sucesso!")
       navigate("/")
     }else{
