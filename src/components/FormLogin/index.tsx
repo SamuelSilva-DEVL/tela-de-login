@@ -5,7 +5,7 @@ import {yupResolver} from "@hookform/resolvers/yup"
 import {SubmitHandler, useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/HookAuthContext";
 
 type LoginUserData = {
   email: string;

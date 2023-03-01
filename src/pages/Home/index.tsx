@@ -5,7 +5,7 @@ import { ListToDo } from "../../components/ListToDo"
 import ToDoFormSchema from "../../validations/validationToDo"
 import { Button, ButtonLogout, Container, ContainerList, Form, Input, TextError } from "./styles"
 import { GrAddCircle } from 'react-icons/gr'
-import useAuth from "../../hooks/useAuth"
+import useAuth from "../../hooks/HookAuthContext"
 import { useNavigate } from "react-router-dom"
 
 interface IHomeProps{

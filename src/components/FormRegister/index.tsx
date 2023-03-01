@@ -5,7 +5,7 @@ import CreateUserFormSchema from '../../validations/validationRegister'
 import { ButtonAction } from '../Button';
 import {useNavigate} from 'react-router-dom'
 import { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/HookAuthContext';
 
 type CreateUserData = {
   name: string;

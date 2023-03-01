@@ -11,7 +11,7 @@ interface IContextProps{
   signin: (email: string, password: string) => string | boolean 
   signup: (email: string, password: string, name: string) => string | boolean
   signout: () => void
-  signed: any
+  signed: any 
 }
 
 export const AuthContext = createContext<IContextProps>(null!);
@@ -44,6 +44,8 @@ export const AuthProvider = ({ children }: IAuthProps) => {
   const signin = (email: string, password: string) => {
     //@ts-ignore
     const usersStorage = JSON.parse(localStorage.getItem("users_bd") );
+
+    console.log("chegueiaq")
     
     const hasUser = usersStorage?.filter((user: IUserProps) => user.email === email);
 
@@ -86,7 +88,7 @@ export const AuthProvider = ({ children }: IAuthProps) => {
   };
 
   const signout = () => {
-    setUser({email: " ", name: " "});
+    setUser({email: "", name: ""});
     localStorage.removeItem("user_token");
   };
 

@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom'
 import { SignUp } from './pages/SignUp'
 import { HomePage } from './pages/Home'
 import { SignIn } from './pages/SignIn'
-import useAuth from './hooks/useAuth'
+import useAuth from './hooks/HookAuthContext'
 
 const Private = () => {
    const { signed } = useAuth();
