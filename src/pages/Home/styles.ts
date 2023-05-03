@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.colors.azul};
-
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,23 +15,35 @@ export const Container = styled.div`
   }
 `
 
+export const ContainerFormList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+`
+
 export const Form = styled.form`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 5px;
+  margin: 20px;
 `
 
 export const ContainerList = styled.div`
-  min-height: 100px;
-  width: 600px;
+  max-height: 500px;
+  width: 650px;
+  overflow-y: scroll;
 `
 export const Input = styled.input`
-  width: 200px;
+  width: 500px;
   height: 40px;
   font-size: 16px;
   border: none;
   padding: 8px;
+  border-radius: 10px;
 
   :focus{
     outline: 0;
@@ -43,10 +55,12 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   font-size: 36px;
+  color: #fff;
 `
 
 export const TextError = styled.p`
   color: red;
+  font-size: 25px;
 `
 export const ButtonLogout = styled.button`
   height: 60px;

@@ -3,15 +3,10 @@ import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { ListToDo } from "../../components/ListToDo"
 import ToDoFormSchema from "../../validations/validationToDo"
-import { Button, ButtonLogout, Container, ContainerList, Form, Input, TextError } from "./styles"
+import { Button, ButtonLogout, Container, ContainerFormList, ContainerList, Form, Input, TextError } from "./styles"
 import { GrAddCircle } from 'react-icons/gr'
 import useAuth from "../../hooks/HookAuthContext"
 import { useNavigate } from "react-router-dom"
-
-interface IHomeProps{
-  nome?: string,
-  sobrenome?: string
-}
 
 interface IListProps {
   name: string
@@ -58,23 +53,25 @@ export function HomePage(){
 
         <h1>Lista de tarefas</h1>
 
-        {errors?.name && <TextError>* {errors.name.message}</TextError>}
+        {errors?.name && <TextError>{errors.name.message}</TextError>}
 
-        <Form onSubmit={handleSubmit(addListItem)}>
-          <Input type="text" {...register("name")} placeholder="Adicione uma tarefa"/>
-          <Button type="submit"><GrAddCircle/></Button>
-        </Form>
+        <ContainerFormList>
+          <Form onSubmit={handleSubmit(addListItem)}>
+            <Input type="text" {...register("name")} placeholder="Adicione uma tarefa"/>
+            <Button type="submit"><GrAddCircle/></Button>
+          </Form>
 
-        <ContainerList>
-          {items?.map((item, id) => (
-            <ListToDo 
-              key={id} 
-              description={item.name}
-              list={item}
-              onClick={deleteListItem}
-            />
-          ))}
-        </ContainerList>
+          <ContainerList>
+            {items?.map((item, id) => (
+              <ListToDo 
+                key={item.id} 
+                description={item.name}
+                list={item}
+                onClick={deleteListItem}
+              />
+            ))}
+          </ContainerList>
+        </ContainerFormList>
       </Container>  
   )
   
